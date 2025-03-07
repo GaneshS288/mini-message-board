@@ -1,4 +1,5 @@
 import express from "express";
+import {messages, addMessage} from "../db/messages.js";
 
 const indexRouter = express.Router();
 
@@ -7,8 +8,9 @@ indexRouter.get("/", (req, res) => {
 });
 
 indexRouter.use("/new", express.json())
-indexRouter.post("/new", (req, res) => {
-  console.log(req.body);
+indexRouter.post("/new", async (req, res) => {
+  await addMessage(req.body.text, req.body.user);
+  console.log(messages);
   res.send("posted new message");
 });
 
