@@ -12,11 +12,6 @@ const messages = [
 ];
 
 async function addMessage(text, user) {
-  if (!text || !user) {
-    const invalidMessageError = new Error("invalid message");
-    throw invalidMessageError;
-  }
-
   const newMessage = { text, user, added: new Date() };
   messages.push(newMessage);
 }
