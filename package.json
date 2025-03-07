@@ -1,0 +1,25 @@
+{
+  "name": "mini-message-board",
+  "version": "1.0.0",
+  "description": "A message board made with ejs and express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GaneshS288/mini-message-board.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GaneshS288/mini-message-board/issues"
+  },
+  "homepage": "https://github.com/GaneshS288/mini-message-board#readme",
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2"
+  }
+}
