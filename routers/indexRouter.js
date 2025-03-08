@@ -10,10 +10,10 @@ indexRouter.get("/", (req, res) => {
   res.send("hello world");
 });
 
-indexRouter.use("/new", express.json());
+indexRouter.use("/new", express.urlencoded({extended: true}));
 
 indexRouter.get("/new", (req, res) => {
-  res.json(messages);
+  res.render('form');
 })
 indexRouter.post("/new", [asyncHandler(postMessage), errorHandler]);
 
