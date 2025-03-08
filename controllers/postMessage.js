@@ -1,6 +1,6 @@
 import { addMessage, messages } from "../db/messages.js";
 
-async function postMessage(req, res, next) {
+async function postMessage(req, res, _next) {
   const text = req.body.text;
   const user = req.body.user;
 
