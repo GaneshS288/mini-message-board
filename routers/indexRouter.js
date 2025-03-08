@@ -11,6 +11,10 @@ indexRouter.get("/", (req, res) => {
 });
 
 indexRouter.use("/new", express.json());
+
+indexRouter.get("/new", (req, res) => {
+  res.json(messages);
+})
 indexRouter.post("/new", [asyncHandler(postMessage), errorHandler]);
 
 export default indexRouter;
