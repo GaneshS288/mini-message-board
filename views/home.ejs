@@ -4,10 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Message Board</title>
+    <link rel="stylesheet" href="/home.css">
 </head>
 <body>
-    <% messages.forEach(element => { %>
-        <%- include("message", {user: element.user, text: element.text, added: element.added}) %>
-    <% }) %>
+    <header>
+        <a href="./new">POST MESSAGE</a>
+    </header>
+    <main>
+        <% messages.forEach(element => { %>
+            <%- include("message", {user: element.user, text: element.text, added: element.added}) %>
+        <% }) %>
+    </main>
 </body>
 </html>
