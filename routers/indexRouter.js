@@ -7,7 +7,7 @@ import errorHandler from "../errors/errorHandler.js";
 const indexRouter = express.Router();
 
 indexRouter.get("/", (req, res) => {
-  res.send("hello world");
+  res.render("home", {messages});
 });
 
 indexRouter.use("/new", express.urlencoded({extended: true}));
