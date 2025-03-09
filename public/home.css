@@ -34,7 +34,7 @@ a:active {
 
 main {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-wrap: wrap;
     padding: 0 1rem;
     gap: 1rem;
@@ -45,7 +45,7 @@ main {
     flex-direction: column;
     background-color: var(--amber-200);
     padding: 1rem;
-    flex: 1 1 auto;
+    flex: 1 1 300px;
     gap: 1rem;
     max-width: max(40%, 300px);
     border-radius: 10px;
