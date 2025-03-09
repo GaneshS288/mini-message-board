@@ -7,14 +7,18 @@ import errorHandler from "../errors/errorHandler.js";
 const indexRouter = express.Router();
 
 indexRouter.get("/", (req, res) => {
-  res.render("home", {messages});
+  res.render("home", { messages });
 });
 
-indexRouter.use("/new", express.urlencoded({extended: true}));
+indexRouter.use("/new", express.urlencoded({ extended: true }));
 
 indexRouter.get("/new", (req, res) => {
-  res.render('newMessage');
-})
-indexRouter.post("/new", [asyncHandler(postMessage), errorHandler]);
+  res.render("newMessage");
+});
+indexRouter.post("/new", [
+  asyncHandler(postMessage),
+  (req, res) => res.status(201).redirect("/"),
+  errorHandler,
+]);
 
 export default indexRouter;

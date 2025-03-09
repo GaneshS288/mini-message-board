@@ -1,4 +1,4 @@
-import { addMessage, messages } from "../db/messages.js";
+import { addMessage } from "../db/messages.js";
 
 async function postMessage(req, res, _next) {
   const text = req.body.text;
@@ -7,9 +7,7 @@ async function postMessage(req, res, _next) {
   if (!text || !user) throw new Error("Invalid message, missing properties!");
 
   await addMessage(text, user);
-
-  console.log(messages);
-  res.send("posted new message");
+  _next();
 }
 
 export default postMessage;
