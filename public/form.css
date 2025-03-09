@@ -1,0 +1,119 @@
+:root {
+    --stone-900: #1C1917;
+    --amber-200: #FDE68A;
+    --amber-950: #451A03;
+    --green-600: #16A34A;
+    --red-600: #DC2626;
+    --neutral-100: #F5F5F5;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 3rem;
+    background-color: var(--amber-200);
+    color: var(--amber-950);
+}
+
+a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: var(--stone-900);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+a:hover {
+    text-decoration: underline;
+    
+}
+
+form {
+    width: 90%;
+    max-width: 700px;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    border: 2px solid var(--stone-900);
+    border-radius: 10px;
+}
+
+legend {
+    font-size: 1.6rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+p {
+    align-self: flex-start;
+}
+
+fieldset > div {
+    display: grid;
+    width: 100%;
+    grid-template-rows: auto 1fr;
+    gap: 1rem;
+}
+
+input, textarea {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.2rem;
+    color: var(--stone-900);
+}
+
+input:user-valid, textarea:user-valid {
+    border: 2px solid var(--green-600);
+} 
+
+input:user-invalid, textarea:user-invalid {
+    border: 2px solid var(--red-600);
+}
+
+input {
+    min-height: 20px;
+}
+
+label {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.4rem;
+}
+
+label > span {
+    color: var(--red-600);
+    position: relative;
+    text-decoration: ;
+}
+
+label > span:hover::before {
+    content: "This field is required";
+    position: absolute;
+    top: -5px;
+    font-size: 1rem;
+    background-color: var(--neutral-100);
+    color: var(--red-600);
+    min-width: max-content;
+    padding: 5px;
+}
+
+button {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    max-width: 200px;
+    box-shadow: 4px 5px var(--amber-950);
+    background-color: var(--red-600);
+    color: var(--neutral-100);
+}
+
+button:active {
+    box-shadow: 4px 4px var(--red-600);
+    background-color: var(--amber-950);
+}

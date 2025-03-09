@@ -3,13 +3,14 @@
     <legend>Post a message</legend>
 
     <div>
-      <label for="author">Author:</label>
+      <p>Fields marked with * are required</p>
+      <label for="author">Author: <span class="required" aria-labelledby="required">*</span></label>
       <input type="text" id="author" name="user" required />
     </div>
 
     <div>
-      <label for="message">Message:</label>
-      <input type="text" id="message" name="text" required />
+      <label for="message">Message: <span class="required">*</span aria-labelledby="required"></label>
+      <textarea name="text" id="message" required rows="10"></textarea>
     </div>
 
     <button type="submit">Post</button>

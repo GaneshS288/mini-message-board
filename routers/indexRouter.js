@@ -13,7 +13,7 @@ indexRouter.get("/", (req, res) => {
 indexRouter.use("/new", express.urlencoded({extended: true}));
 
 indexRouter.get("/new", (req, res) => {
-  res.render('form');
+  res.render('newMessage');
 })
 indexRouter.post("/new", [asyncHandler(postMessage), errorHandler]);
 
