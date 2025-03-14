@@ -1,3 +1,5 @@
+import crypto from "crypto"
+
 const messages = [
   {
     text: "Hi there!",
