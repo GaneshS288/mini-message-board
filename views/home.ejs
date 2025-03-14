@@ -12,7 +12,7 @@
     </header>
     <main>
         <% messages.forEach(element => { %>
-            <%- include("messageCard", {user: element.user, text: element.text, added: element.added}) %>
+            <%- include("messageCard", {user: element.user, text: element.text, added: element.added, messageid: element.messageid}) %>
         <% }) %>
     </main>
 </body>

@@ -10,6 +10,13 @@ indexRouter.get("/", (req, res) => {
   res.render("home", { messages });
 });
 
+indexRouter.get("/messages/:messageid", (req, res, _next) => {
+  const selectedMessage = messages.find(
+    (message) => message.messageid === req.params.messageid
+  );
+  res.render("messagePage", { ...selectedMessage });
+});
+
 indexRouter.use("/new", express.urlencoded({ extended: true }));
 
 indexRouter.get("/new", (req, res) => {
