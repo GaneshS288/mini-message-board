@@ -20,8 +20,10 @@
   },
   "homepage": "https://github.com/GaneshS288/mini-message-board#readme",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "pg": "^8.14.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
