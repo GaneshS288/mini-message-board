@@ -8,5 +8,5 @@ export default new Pool({
   database: process.env.DATABASE_NAME,
   user: process.env.USER_NAME,
   password: process.env.USER_PASSWORD,
-  port: process.env.PORT,
+  port: process.env.DATABASE_PORT,
 });
