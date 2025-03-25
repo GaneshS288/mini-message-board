@@ -21,14 +21,15 @@ class DB {
   }
 
   static async addMessage(username, text) {
-    if (this.doesNameAlreadyExists(username)) {
+    if (await this.doesNameAlreadyExists(username)) {
       try {
         const userId = await this.getUserIdByName(username);
+        const date = new Date().toDateString();
 
         await pool.query(
-          `INSERT INTO messages (user_id, text)
-          VALUES ($1, $2)`,
-          [userId, text]
+          `INSERT INTO messages (user_id, text, date)
+          VALUES ($1, $2, $3)`,
+          [userId, text, date]
         );
       } catch (err) {
         err.status = 500;
@@ -39,15 +40,16 @@ class DB {
       try {
         const { rows } = await pool.query(
           `INSERT INTO users (name)
-          VALUES ($1) ON CONFLICT(name) DO NOTHING RETURNING id;`,
+          VALUES ($1) RETURNING id;`,
           [username]
         );
         const userId = rows[0].id;
+        const date = new Date().toDateString();
 
         await pool.query(
-          `INSERT INTO messages (user_id, text)
-          VALUES ($1, $2)`,
-          [userId, text]
+          `INSERT INTO messages (user_id, text, date)
+          VALUES ($1, $2, $3)`,
+          [userId, text, date]
         );
       } catch (err) {
         err.status = 500;
@@ -59,46 +61,20 @@ class DB {
 
   static async doesNameAlreadyExists(username) {
     const { rows } = await pool.query(
-      "SELECT name FROM users WHERE name = $1",
-      [username]
+      "SELECT name FROM users WHERE LOWER(name) = $1",
+      [username.toLowerCase()]
     );
     console.log(rows);
     return rows.length > 0 ? true : false;
   }
 
   static async getUserIdByName(username) {
-    const { rows } = await pool.query("SELECT id FROM users WHERE name = $1", [
-      username,
+    const { rows } = await pool.query("SELECT id FROM users WHERE LOWER(name) = $1", [
+      username.toLowerCase(),
     ]);
     return rows[0].id;
   }
 }
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-    messageid: crypto.randomUUID(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-    messageid: crypto.randomUUID(),
-  },
-];
-
-async function addMessage(text, user) {
-  const newMessage = {
-    text,
-    user,
-    added: new Date(),
-    messageid: crypto.randomUUID(),
-  };
-  messages.push(newMessage);
-}
-
-DB.addMessage("Ganesh", "I am trying something out");
 
 export default DB;
