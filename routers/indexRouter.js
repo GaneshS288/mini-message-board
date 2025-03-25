@@ -1,21 +1,14 @@
 import express from "express";
-import { messages } from "../db/messages.js";
 import asyncHandler from "../lib/asyncHandler.js";
 import postMessage from "../controllers/postMessage.js";
 import errorHandler from "../errors/errorHandler.js";
+import { getAllMessages, getMessage } from "../controllers/getMessage.js";
 
 const indexRouter = express.Router();
 
-indexRouter.get("/", (req, res) => {
-  res.render("home", { messages });
-});
+indexRouter.get("/", [asyncHandler(getAllMessages), errorHandler]);
 
-indexRouter.get("/messages/:messageid", (req, res, _next) => {
-  const selectedMessage = messages.find(
-    (message) => message.messageid === req.params.messageid
-  );
-  res.render("messagePage", { ...selectedMessage });
-});
+indexRouter.get("/messages/:messageid", asyncHandler(getMessage)); 
 
 indexRouter.use("/new", express.urlencoded({ extended: true }));
 
